@@ -16,6 +16,15 @@ class MyPageViewController: UIViewController {
     func configureView() {
         print("MyPage")
         view.backgroundColor = .white
+        navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.navigationItem.hidesBackButton = true
+        self.tabBarController?.navigationItem.title = "마이페이지"
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+    }
+    
+    @objc private func addTapped() {
+        let photoVC = MakePhotoViewController()
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 }
 
