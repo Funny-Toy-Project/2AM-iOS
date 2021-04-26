@@ -46,6 +46,14 @@ class MakePhotoViewController: UIViewController {
         return btn
     }()
     
+    private let btnSaveImage: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("저장하기", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        return btn
+    }()
+    
     //MARK:- Lifecycle
     override func viewDidLoad() {
         configureView()
@@ -62,6 +70,7 @@ class MakePhotoViewController: UIViewController {
         view.addSubview(imageView)
         view.addSubview(btnRefreshPhoto)
         view.addSubview(btnApply)
+        view.addSubview(btnSaveImage)
     }
     
     func configureSubView() {
@@ -78,6 +87,11 @@ class MakePhotoViewController: UIViewController {
         btnApply.snp.makeConstraints {
             $0.centerX.equalTo(view.snp.centerX)
             $0.top.equalTo(btnRefreshPhoto.snp.bottom).offset(16)
+        }
+        
+        btnSaveImage.snp.makeConstraints {
+            $0.centerX.equalTo(view.snp.centerX)
+            $0.top.equalTo(btnApply.snp.bottom).offset(16)
         }
         
     }
@@ -98,8 +112,17 @@ class MakePhotoViewController: UIViewController {
             .tap
             .bind { [self] in
                 print("적용하기")
-                let newImage = textToImage(drawText: "HELLLLO", inImage: imageView.image!, atPoint: CGPoint(x: view.bounds.width/2, y: 100))
+                let newImage = textToImage(drawText: "HELLLLO", inImage: imageView.image!, atPoint: CGPoint(x: imageView.bounds.minX, y: imageView.bounds.midY))
                 imageView.image = newImage
+            }
+            .disposed(by: bag)
+        
+        btnSaveImage.rx
+            .tap
+            .bind {
+                let image = self.imageView.image
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: image!)
             }
             .disposed(by: bag)
     }
@@ -125,5 +148,7 @@ class MakePhotoViewController: UIViewController {
 
         return newImage!
     }
+    
+    
     
 }
