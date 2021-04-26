@@ -24,9 +24,14 @@ class TextFieldLogin: UITextField {
         snp.makeConstraints {
             $0.height.equalTo(56)
         }
+        autocapitalizationType = .none
         
-        if title == "비밀번호" {
+        if (title == "비밀번호") || (title == "비밀번호 확인")  {
             isSecureTextEntry = true
+        }
+        
+        if title == "전화번호" {
+            keyboardType = .numberPad
         }
         
         addLeftPadding()
@@ -36,7 +41,8 @@ class TextFieldLogin: UITextField {
     }
 }
 
-extension UITextField {
+extension UITextField: UITextFieldDelegate {
+    
     func addLeftPadding() {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
         self.leftView = paddingView

@@ -88,6 +88,11 @@ class LoginViewController: UIViewController {
     }
     
     private func push2SignUp() {
+        let signupVC = SignUpViewController()
+        navigationController?.pushViewController(signupVC, animated: true)
+    }
+    
+    private func push2Login() {
         let tabVC = TabBarController()
         navigationController?.pushViewController(tabVC, animated: true)
     }
@@ -162,7 +167,8 @@ class LoginViewController: UIViewController {
         
         buttonSignUp.rx
             .tap
-            .bind {
+            .bind { [weak self] in
+                self?.push2SignUp()
                 print("회원가입")
             }
             .disposed(by: bag)
@@ -170,7 +176,7 @@ class LoginViewController: UIViewController {
         buttonLogin.rx
             .tap
             .bind { [weak self] in
-                self?.push2SignUp()
+                self?.push2Login()
                 print("로그인")
             }
             .disposed(by: bag)
