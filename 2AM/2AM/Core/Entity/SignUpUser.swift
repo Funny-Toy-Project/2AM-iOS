@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  SignUpUser.swift
 //  2AM
 //
 //  Created by 전판근 on 2021/04/27.
@@ -7,17 +7,18 @@
 
 import Foundation
 
-struct User: Codable {
-    let name: String
+struct SignUpUser: Codable {
+    let id: String
+    let phone: String
 }
 
-enum LoginError: Error {
-    case defaulltError
+enum SignUpError: Error {
+    case defaultError
     case error(code: Int)
     
     var msg: String {
         switch self {
-        case .defaulltError:
+        case .defaultError:
             return "ERROR"
             
         case .error(let code):

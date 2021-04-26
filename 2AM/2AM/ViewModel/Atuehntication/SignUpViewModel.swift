@@ -2,37 +2,26 @@
 //  SignUpViewModel.swift
 //  2AM
 //
-//  Created by 전판근 on 2021/04/26.
+//  Created by 전판근 on 2021/04/27.
 //
 
+import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SignUpViewBindable {
-    var id: BehaviorRelay<String?> { get }
-    var password: BehaviorRelay<String?> { get }
-    var nextBtnPressed: PublishRelay<Void> { get }
-}
-
-
-final class SignUpViewModel: SignUpViewBindable {
+struct SignUpViewModel {
+    let idTfChanged = PublishRelay<String>()
+    let pwTfChanged = PublishRelay<String>()
+    let pwcTfChanged = PublishRelay<String>()
+    let phoneTfChanged = PublishRelay<String>()
+    let signUpBtnTouched = PublishRelay<Void>()
     
-    private let bag = DisposeBag()
+    let result: Signal<Result<SignUpUser, SignUpError>>
     
-    var id = BehaviorRelay<String?>(value: nil)
-    var password = BehaviorRelay<String?>(value: "")
-    var nextBtnPressed = PublishRelay<Void>()
-    
-    let response = PublishSubject<(id: String?, password: String?)?>()
-    
-    init() {
-        nextBtnPressed
-            .subscribe(onNext: { [weak self] in
-                self?.response.onNext((id: self?.id.value,
-                                       password: self?.password.value))
-            })
-            .disposed(by: bag)
+    init(model: SignUpModel = SignUpModel()) {
+        result = signUpBtnTouched
+            .withLatestFrom(Observable.combineLatest(idTfChanged, pwTfChanged, pwcTfChanged, phoneTfChanged))
+            .flatMapLatest { model.requestSignUp(id: $0.0, pw: $0.1, pwCheck: $0.2, phone: $0.3)}
+            .asSignal(onErrorJustReturn: .failure(.defaultError))
     }
-    
-    
 }

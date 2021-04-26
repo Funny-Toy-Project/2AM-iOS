@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController {
     //MARK:- Private
     
     private let bag = DisposeBag()
+    private let viewModel = SignUpViewModel()
     
     private let labelTitle: UILabel = {
         let lb = UILabel()
@@ -133,24 +134,56 @@ extension SignUpViewController {
     }
     
     func bindRx() {
-//        tfPhone.rx
-//            .controlEvent([.editingChanged])
-//            .asObservable()
-//            .subscribe(onNext: { _ in
-//                print("editingChanged: \(self.tfPhone.text ?? "")")
-//            }).disposed(by: bag)
-//
-//        tfPhone.rx
-//            .text
-//            .subscribe(onNext: { newValue in
-//                print("rx.text subscribe : \(newValue ?? "")")
-//            }).disposed(by: bag)
+        
+        tfID.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.idTfChanged)
+            .disposed(by: bag)
+        
+        tfPassword.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.pwTfChanged)
+            .disposed(by: bag)
+        
+        tfPasswordCheck.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.pwcTfChanged)
+            .disposed(by: bag)
+        
         
         tfPhone.rx
-            .observe(String.self, "text")
-            .subscribe(onNext: { newValue in
-                print("observe text : \(newValue ?? "")")
-                print("\(String(describing: newValue?.pretty()))")
-            }).disposed(by: bag)
+            .text
+            .orEmpty
+            .bind(to: viewModel.pwTfChanged)
+            .disposed(by: bag)
+        
+        buttonSignUp.rx
+            .tap
+            .bind(to: viewModel.signUpBtnTouched)
+            .disposed(by: bag)
+        
+        viewModel.result.emit(onNext: { (result) in
+            switch result {
+            case .success(let user):
+                print(user)
+                self.signUp2Login()
+            case .failure(let err):
+                print(err)
+                self.showError()
+            }
+        })
+        .disposed(by: bag)
+    }
+    
+    func signUp2Login() {
+        self.navigationController?.popViewController(animated: true)
+        print("SUCCESS SIGN UP")
+    }
+    
+    func showError() {
+        print("SIGN UP ERROR")
     }
 }

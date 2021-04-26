@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     //MARK:- private
     
     private let bag = DisposeBag()
+    private let viewModel = LoginViewModel()
+    
     
     private let labelTitle: UILabel = {
         let lb = UILabel()
@@ -97,6 +99,10 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(tabVC, animated: true)
     }
     
+    private func showError() {
+        print("LOGIN ERROR")
+    }
+    
     //MARK:- Configure
     func configureView() {
         view.backgroundColor = .white
@@ -158,6 +164,19 @@ class LoginViewController: UIViewController {
     }
     
     func bindRx() {
+        
+        tfLogin.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.idTfChanged)
+            .disposed(by: bag)
+        
+        tfPassword.rx
+            .text
+            .orEmpty
+            .bind(to: viewModel.pwTfChanged)
+            .disposed(by: bag)
+        
         buttonEditUser.rx
             .tap
             .bind {
@@ -173,12 +192,21 @@ class LoginViewController: UIViewController {
             }
             .disposed(by: bag)
         
+        
         buttonLogin.rx
             .tap
-            .bind { [weak self] in
-                self?.push2Login()
-                print("로그인")
-            }
+            .bind(to: viewModel.loginBtnTouched)
             .disposed(by: bag)
+        
+        viewModel.result.emit(onNext: { (result) in
+            switch result {
+            case .success(let user):
+                print(user)
+                self.push2Login()
+            case .failure(let err):
+                print(err)
+                self.showError()
+            }
+        }).disposed(by: bag)
     }
 }

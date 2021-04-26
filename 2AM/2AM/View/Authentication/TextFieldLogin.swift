@@ -28,11 +28,12 @@ class TextFieldLogin: UITextField {
         
         if (title == "비밀번호") || (title == "비밀번호 확인")  {
             isSecureTextEntry = true
+            autocorrectionType = .no
         }
         
-        if title == "전화번호" {
-            keyboardType = .numberPad
-        }
+//        if title == "전화번호" {
+//            keyboardType = .numberPad
+//        }
         
         addLeftPadding()
         layer.cornerRadius = 10

@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 
 struct LoginModel {
-    func requestLogin(id: String, pw: String) -> Observable<Result<User, LoginError>> {
+    func requestLogin(id: String, pw: String) -> Observable<Result<LoginUser, LoginError>> {
         return Observable.create { (observer) -> Disposable in
             if id != "" && pw != "" {
-                observer.onNext(.success(User(name: id)))
+                observer.onNext(.success(LoginUser(name: id)))
             } else {
                 observer.onNext(.failure(.defaulltError))
             }
