@@ -7,10 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     
     //MARK:- private
+    
+    private let bag = DisposeBag()
+    
     private let labelTitle: UILabel = {
         let lb = UILabel()
         lb.text = "감성 글귀"
@@ -19,18 +24,52 @@ class LoginViewController: UIViewController {
         return lb
     }()
     
-
+    
     private let labelLogin = LabelLogin(title: "로그인")
     private let tfLogin = TextFieldLogin(title: "로그인")
     
     private let labelPassword = LabelLogin(title: "비밀번호")
     private let tfPassword = TextFieldLogin(title: "비밀번호")
     
+    private let buttonSignUp: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("회원가입", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return btn
+    }()
+    
+    private let buttonEditUser: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("비밀번호 수정", for: .normal)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return btn
+    }()
+    
+    private let labelBar: UILabel = {
+        let lb = UILabel()
+        lb.text = "|"
+        lb.textColor = .systemBlue
+        lb.font = UIFont.boldSystemFont(ofSize: 16)
+        return lb
+    }()
+    
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 8.0
+        stack.alignment = .center
+        stack.distribution = .fillProportionally
+        
+        return stack
+    }()
+    
     //MARK:- Lifecycle
     override func viewDidLoad() {
         
         configureView()
         configureSubView()
+        bindRx()
     }
     
     //MARK:- Configure
@@ -42,6 +81,7 @@ class LoginViewController: UIViewController {
         view.addSubview(tfLogin)
         view.addSubview(labelPassword)
         view.addSubview(tfPassword)
+        view.addSubview(stackView)
     }
     
     func configureSubView() {
@@ -74,5 +114,30 @@ class LoginViewController: UIViewController {
             $0.top.equalTo(labelPassword.snp.bottom).offset(16)
             $0.trailing.equalTo(safeArea.snp.trailing).offset(-16)
         }
+        
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(tfPassword.snp.bottom).offset(16)
+            $0.centerX.equalTo(safeArea.snp.centerX)
+        }
+        
+        for btn in [buttonEditUser, labelBar, buttonSignUp] {
+                    stackView.addArrangedSubview(btn)
+                }
+    }
+    
+    func bindRx() {
+        buttonEditUser.rx
+            .tap
+            .bind {
+                print("비밀번호 수정")
+            }
+            .disposed(by: bag)
+        
+        buttonSignUp.rx
+            .tap
+            .bind {
+                print("회원가입")
+            }
+            .disposed(by: bag)
     }
 }
