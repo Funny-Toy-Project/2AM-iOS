@@ -111,7 +111,7 @@ class MakePhotoViewController: UIViewController {
             .tap
             .bind { [self] in
                 print("적용하기")
-                let newImage = textToImage(drawText: "HELLLLO", inImage: imageView.image!, atPoint: CGPoint(x: imageView.bounds.minX, y: imageView.bounds.midY))
+                let newImage = textToImage(drawText: "안녕, 새벽 두시", inImage: imageView.image!, atPoint: CGPoint(x: 0, y: imageView.bounds.size.height/2))
                 imageView.image = newImage
             }
             .disposed(by: bag)
@@ -140,9 +140,13 @@ class MakePhotoViewController: UIViewController {
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
 
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        
         let textFontAttributes = [
             NSAttributedString.Key.font: textFont,
             NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
             ] as [NSAttributedString.Key : Any]
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
 
