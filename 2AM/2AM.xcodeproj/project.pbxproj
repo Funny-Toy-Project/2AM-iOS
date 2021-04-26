@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0618BF6926357FEC00404CBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618BF6826357FEC00404CBE /* LoginViewController.swift */; };
 		0618BF6D2636474000404CBE /* LabelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618BF6C2636474000404CBE /* LabelLogin.swift */; };
+		0618BF702636496500404CBE /* TextFieldLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0618BF6F2636496500404CBE /* TextFieldLogin.swift */; };
 		06352FA02635749800AD1429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352F9F2635749800AD1429 /* AppDelegate.swift */; };
 		06352FA22635749800AD1429 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352FA12635749800AD1429 /* SceneDelegate.swift */; };
 		06352FA42635749800AD1429 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352FA32635749800AD1429 /* HomeViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0618BF6826357FEC00404CBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0618BF6C2636474000404CBE /* LabelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLogin.swift; sourceTree = "<group>"; };
+		0618BF6F2636496500404CBE /* TextFieldLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLogin.swift; sourceTree = "<group>"; };
 		06352F9C2635749800AD1429 /* 2AM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2AM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06352F9F2635749800AD1429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06352FA12635749800AD1429 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			children = (
 				0618BF6826357FEC00404CBE /* LoginViewController.swift */,
 				0618BF6C2636474000404CBE /* LabelLogin.swift */,
+				0618BF6F2636496500404CBE /* TextFieldLogin.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				06352FA42635749800AD1429 /* HomeViewController.swift in Sources */,
 				06352FA02635749800AD1429 /* AppDelegate.swift in Sources */,
 				06352FA22635749800AD1429 /* SceneDelegate.swift in Sources */,
+				0618BF702636496500404CBE /* TextFieldLogin.swift in Sources */,
 				0618BF6926357FEC00404CBE /* LoginViewController.swift in Sources */,
 				06C4105A263579D4000A1109 /* MyPageViewController.swift in Sources */,
 			);
