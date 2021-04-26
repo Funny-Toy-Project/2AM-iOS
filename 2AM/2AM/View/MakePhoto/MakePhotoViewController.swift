@@ -29,11 +29,22 @@ class MakePhotoViewController: UIViewController {
         return imageView
     }()
     
+    private let stackButtons: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.spacing = 8
+        sv.alignment = .fill
+        sv.distribution = .fillEqually
+        return sv
+    }()
+    
+    
     private let btnRefreshPhoto: UIButton = {
         let btn = UIButton()
         btn.setTitle("새로고침", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
         return btn
     }()
     
@@ -42,6 +53,7 @@ class MakePhotoViewController: UIViewController {
         btn.setTitle("적용하기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
         return btn
     }()
     
@@ -50,6 +62,7 @@ class MakePhotoViewController: UIViewController {
         btn.setTitle("저장하기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
         return btn
     }()
     
@@ -67,9 +80,16 @@ class MakePhotoViewController: UIViewController {
         self.tabBarController?.navigationItem.title = "짤 만들기"
         
         view.addSubview(imageView)
-        view.addSubview(btnRefreshPhoto)
-        view.addSubview(btnApply)
-        view.addSubview(btnSaveImage)
+        
+        // 기능 버튼
+        view.addSubview(stackButtons)
+        [btnRefreshPhoto, btnApply, btnSaveImage].forEach {
+            stackButtons.addArrangedSubview($0)
+        }
+        
+//        view.addSubview(btnRefreshPhoto)
+//        view.addSubview(btnApply)
+//        view.addSubview(btnSaveImage)
     }
     
     func configureSubView() {
@@ -78,20 +98,27 @@ class MakePhotoViewController: UIViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         
-        btnRefreshPhoto.snp.makeConstraints {
-            $0.centerX.equalTo(view.snp.centerX)
+        stackButtons.snp.makeConstraints {
+            $0.leading.equalTo(view.snp.leading).offset(8)
             $0.top.equalTo(imageView.snp.bottom).offset(16)
+            $0.trailing.equalTo(view.snp.trailing).offset(-8)
+//            $0.centerX.equalToSuperview()
         }
         
-        btnApply.snp.makeConstraints {
-            $0.centerX.equalTo(view.snp.centerX)
-            $0.top.equalTo(btnRefreshPhoto.snp.bottom).offset(16)
-        }
-        
-        btnSaveImage.snp.makeConstraints {
-            $0.centerX.equalTo(view.snp.centerX)
-            $0.top.equalTo(btnApply.snp.bottom).offset(16)
-        }
+//        btnRefreshPhoto.snp.makeConstraints {
+//            $0.centerX.equalTo(view.snp.centerX)
+//            $0.top.equalTo(imageView.snp.bottom).offset(16)
+//        }
+//
+//        btnApply.snp.makeConstraints {
+//            $0.centerX.equalTo(view.snp.centerX)
+//            $0.top.equalTo(btnRefreshPhoto.snp.bottom).offset(16)
+//        }
+//
+//        btnSaveImage.snp.makeConstraints {
+//            $0.centerX.equalTo(view.snp.centerX)
+//            $0.top.equalTo(btnApply.snp.bottom).offset(16)
+//        }
         
     }
     
