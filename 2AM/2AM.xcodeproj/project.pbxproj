@@ -20,6 +20,7 @@
 		06C4105A263579D4000A1109 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C41059263579D4000A1109 /* MyPageViewController.swift */; };
 		06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */; };
 		06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD288D2636CB4300C26E3D /* ImageSaver.swift */; };
+		06CD28912636FEED00C26E3D /* ToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28902636FEED00C26E3D /* ToolButton.swift */; };
 		BDC6F6132B015432A326A8B8 /* Pods_2AM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		06C41059263579D4000A1109 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePhotoViewController.swift; sourceTree = "<group>"; };
 		06CD288D2636CB4300C26E3D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		06CD28902636FEED00C26E3D /* ToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolButton.swift; sourceTree = "<group>"; };
 		12A440BEB931F5A1D183C8CA /* Pods-2AM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.debug.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.debug.xcconfig"; sourceTree = "<group>"; };
 		7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2AM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA31A7C48F3355100F176EC /* Pods-2AM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.release.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */,
 				06CD288D2636CB4300C26E3D /* ImageSaver.swift */,
+				06CD28902636FEED00C26E3D /* ToolButton.swift */,
 			);
 			path = MakePhoto;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				0618BF6D2636474000404CBE /* LabelLogin.swift in Sources */,
 				06352FA42635749800AD1429 /* HomeViewController.swift in Sources */,
 				0618BF7A26365AF200404CBE /* SignUpViewController.swift in Sources */,
+				06CD28912636FEED00C26E3D /* ToolButton.swift in Sources */,
 				06352FA02635749800AD1429 /* AppDelegate.swift in Sources */,
 				06352FA22635749800AD1429 /* SceneDelegate.swift in Sources */,
 				06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */,

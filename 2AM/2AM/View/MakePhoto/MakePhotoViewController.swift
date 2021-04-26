@@ -38,33 +38,9 @@ class MakePhotoViewController: UIViewController {
         return sv
     }()
     
-    
-    private let btnRefreshPhoto: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("새로고침", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        btn.titleLabel?.adjustsFontSizeToFitWidth = true
-        return btn
-    }()
-    
-    private let btnApply: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("적용하기", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        btn.titleLabel?.adjustsFontSizeToFitWidth = true
-        return btn
-    }()
-    
-    private let btnSaveImage: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("저장하기", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        btn.titleLabel?.adjustsFontSizeToFitWidth = true
-        return btn
-    }()
+    private let btnRefreshPhoto = ToolButton(title: "새로고침")
+    private let btnApply = ToolButton(title: "적용하기")
+    private let btnSaveImage = ToolButton(title: "저장하기")
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -87,9 +63,6 @@ class MakePhotoViewController: UIViewController {
             stackButtons.addArrangedSubview($0)
         }
         
-//        view.addSubview(btnRefreshPhoto)
-//        view.addSubview(btnApply)
-//        view.addSubview(btnSaveImage)
     }
     
     func configureSubView() {
@@ -102,24 +75,8 @@ class MakePhotoViewController: UIViewController {
             $0.leading.equalTo(view.snp.leading).offset(8)
             $0.top.equalTo(imageView.snp.bottom).offset(16)
             $0.trailing.equalTo(view.snp.trailing).offset(-8)
-//            $0.centerX.equalToSuperview()
         }
-        
-//        btnRefreshPhoto.snp.makeConstraints {
-//            $0.centerX.equalTo(view.snp.centerX)
-//            $0.top.equalTo(imageView.snp.bottom).offset(16)
-//        }
-//
-//        btnApply.snp.makeConstraints {
-//            $0.centerX.equalTo(view.snp.centerX)
-//            $0.top.equalTo(btnRefreshPhoto.snp.bottom).offset(16)
-//        }
-//
-//        btnSaveImage.snp.makeConstraints {
-//            $0.centerX.equalTo(view.snp.centerX)
-//            $0.top.equalTo(btnApply.snp.bottom).offset(16)
-//        }
-        
+
     }
     
     func bindRx() {
@@ -185,7 +142,4 @@ class MakePhotoViewController: UIViewController {
 
         return newImage!
     }
-    
-    
-    
 }
