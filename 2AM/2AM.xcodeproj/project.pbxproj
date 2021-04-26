@@ -21,6 +21,9 @@
 		06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */; };
 		06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD288D2636CB4300C26E3D /* ImageSaver.swift */; };
 		06CD28912636FEED00C26E3D /* ToolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28902636FEED00C26E3D /* ToolButton.swift */; };
+		06CD28962637220A00C26E3D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28952637220A00C26E3D /* User.swift */; };
+		06CD28992637228000C26E3D /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28982637228000C26E3D /* LoginModel.swift */; };
+		06CD289C2637233000C26E3D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD289B2637233000C26E3D /* LoginViewModel.swift */; };
 		BDC6F6132B015432A326A8B8 /* Pods_2AM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 		06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePhotoViewController.swift; sourceTree = "<group>"; };
 		06CD288D2636CB4300C26E3D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		06CD28902636FEED00C26E3D /* ToolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolButton.swift; sourceTree = "<group>"; };
+		06CD28952637220A00C26E3D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		06CD28982637228000C26E3D /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		06CD289B2637233000C26E3D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		12A440BEB931F5A1D183C8CA /* Pods-2AM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.debug.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.debug.xcconfig"; sourceTree = "<group>"; };
 		7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2AM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA31A7C48F3355100F176EC /* Pods-2AM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.release.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.release.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 		0618BF73263656E400404CBE /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				06CD28982637228000C26E3D /* LoginModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -144,9 +151,10 @@
 		06352F9E2635749800AD1429 /* 2AM */ = {
 			isa = PBXGroup;
 			children = (
+				06CD2893263721F200C26E3D /* Core */,
+				062E38DA263576D7006C9F17 /* Application */,
 				06CD287E2636A54400C26E3D /* ViewModel */,
 				0618BF72263656DF00404CBE /* Model */,
-				062E38DA263576D7006C9F17 /* Application */,
 				062E38D9263576D0006C9F17 /* View */,
 				06352FAD2635749900AD1429 /* Info.plist */,
 			);
@@ -180,6 +188,7 @@
 		06CD287F2636A54900C26E3D /* Atuehntication */ = {
 			isa = PBXGroup;
 			children = (
+				06CD289B2637233000C26E3D /* LoginViewModel.swift */,
 			);
 			path = Atuehntication;
 			sourceTree = "<group>";
@@ -192,6 +201,22 @@
 				06CD28902636FEED00C26E3D /* ToolButton.swift */,
 			);
 			path = MakePhoto;
+			sourceTree = "<group>";
+		};
+		06CD2893263721F200C26E3D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				06CD2894263721F700C26E3D /* Entity */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		06CD2894263721F700C26E3D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				06CD28952637220A00C26E3D /* User.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		B1F3CFB8DE39FDC985FB4F1C /* Frameworks */ = {
@@ -324,12 +349,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CD28962637220A00C26E3D /* User.swift in Sources */,
+				06CD28992637228000C26E3D /* LoginModel.swift in Sources */,
 				0618BF7E26365CBF00404CBE /* TabBarController.swift in Sources */,
 				06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */,
 				0618BF6D2636474000404CBE /* LabelLogin.swift in Sources */,
 				06352FA42635749800AD1429 /* HomeViewController.swift in Sources */,
 				0618BF7A26365AF200404CBE /* SignUpViewController.swift in Sources */,
 				06CD28912636FEED00C26E3D /* ToolButton.swift in Sources */,
+				06CD289C2637233000C26E3D /* LoginViewModel.swift in Sources */,
 				06352FA02635749800AD1429 /* AppDelegate.swift in Sources */,
 				06352FA22635749800AD1429 /* SceneDelegate.swift in Sources */,
 				06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */,
