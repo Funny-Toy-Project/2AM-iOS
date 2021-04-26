@@ -87,6 +87,11 @@ class LoginViewController: UIViewController {
         bindRx()
     }
     
+    private func push2SignUp() {
+        let tabVC = TabBarController()
+        navigationController?.pushViewController(tabVC, animated: true)
+    }
+    
     //MARK:- Configure
     func configureView() {
         view.backgroundColor = .white
@@ -164,7 +169,8 @@ class LoginViewController: UIViewController {
         
         buttonLogin.rx
             .tap
-            .bind {
+            .bind { [weak self] in
+                self?.push2SignUp()
                 print("로그인")
             }
             .disposed(by: bag)
