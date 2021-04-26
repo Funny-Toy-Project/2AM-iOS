@@ -10,7 +10,12 @@ import SnapKit
 
 class MyPageViewController: UIViewController {
     override func viewDidLoad() {
-        print("hi")
+        configureView()
+    }
+    
+    func configureView() {
+        print("MyPage")
+        view.backgroundColor = .white
     }
 }
 

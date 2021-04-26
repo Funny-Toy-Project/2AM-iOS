@@ -15,31 +15,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         //MARK:- RootViewController
-//        guard let scene = (scene as? UIWindowScene) else { return }
-//
-//        window = UIWindow(windowScene: scene)
-//        window?.rootViewController = HomeViewController()
-//        window?.makeKeyAndVisible()
+        guard let scene = (scene as? UIWindowScene) else { return }
+
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = LoginViewController()
+        window?.makeKeyAndVisible()
         
         //MARK:- TabBarViewController
-        let tbc = UITabBarController()
-        
-        let view01 = HomeViewController()
-        let view02 = MyPageViewController()
-        
-        tbc.setViewControllers([view01, view02], animated: false)
-        
-//        UITabBarItem(title: "메인", image: UIImage(systemName: "home"), tag: 0)
-        view01.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0)
-        view02.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
-//            UITabBarItem(title: "마이페이지", image: UIImage(systemName: "more": "more"), tag: 1)
-        
-        tbc.tabBar.backgroundColor = .brown
-        
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = tbc
-        window?.makeKeyAndVisible()
+//        let tbc = UITabBarController()
+//
+//        let view01 = HomeViewController()
+//        let view02 = MyPageViewController()
+//
+//        tbc.setViewControllers([view01, view02], animated: false)
+//
+////        UITabBarItem(title: "메인", image: UIImage(systemName: "home"), tag: 0)
+//        view01.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 0)
+//        view02.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+////            UITabBarItem(title: "마이페이지", image: UIImage(systemName: "more": "more"), tag: 1)
+//
+//        tbc.tabBar.backgroundColor = .brown
+//
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        window = UIWindow(windowScene: scene)
+//        self.window?.rootViewController = tbc
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

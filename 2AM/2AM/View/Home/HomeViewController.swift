@@ -20,13 +20,15 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("HI")
+        
         configureView()
         configureSubView()
+        
     }
     
     func configureView() {
         view.backgroundColor = .white
+        print("HOME")
         
         view.addSubview(myView)
         myView.snp.makeConstraints {
