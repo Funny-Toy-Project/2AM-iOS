@@ -64,6 +64,21 @@ class LoginViewController: UIViewController {
         return stack
     }()
     
+    private let buttonLogin: UIButton = {
+        let btn = UIButton()
+        btn.snp.makeConstraints {
+            $0.height.equalTo(56)
+        }
+        
+        btn.setTitle("로그인", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        btn.backgroundColor = .systemBlue
+        
+        btn.layer.cornerRadius = 10
+        return btn
+    }()
+    
     //MARK:- Lifecycle
     override func viewDidLoad() {
         
@@ -82,6 +97,7 @@ class LoginViewController: UIViewController {
         view.addSubview(labelPassword)
         view.addSubview(tfPassword)
         view.addSubview(stackView)
+        view.addSubview(buttonLogin)
     }
     
     func configureSubView() {
@@ -123,6 +139,12 @@ class LoginViewController: UIViewController {
         for btn in [buttonEditUser, labelBar, buttonSignUp] {
                     stackView.addArrangedSubview(btn)
                 }
+        
+        buttonLogin.snp.makeConstraints {
+            $0.leading.equalTo(safeArea.snp.leading).offset(16)
+            $0.trailing.equalTo(safeArea.snp.trailing).offset(-16)
+            $0.bottom.equalTo(safeArea.snp.bottom).offset(-30)
+        }
     }
     
     func bindRx() {
@@ -137,6 +159,13 @@ class LoginViewController: UIViewController {
             .tap
             .bind {
                 print("회원가입")
+            }
+            .disposed(by: bag)
+        
+        buttonLogin.rx
+            .tap
+            .bind {
+                print("로그인")
             }
             .disposed(by: bag)
     }

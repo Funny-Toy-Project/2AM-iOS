@@ -58,6 +58,21 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		0618BF72263656DF00404CBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0618BF73263656E400404CBE /* Authentication */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0618BF73263656E400404CBE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		062E38D9263576D0006C9F17 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +115,7 @@
 		06352F9E2635749800AD1429 /* 2AM */ = {
 			isa = PBXGroup;
 			children = (
+				0618BF72263656DF00404CBE /* Model */,
 				062E38DA263576D7006C9F17 /* Application */,
 				062E38D9263576D0006C9F17 /* View */,
 				06352FAD2635749900AD1429 /* Info.plist */,
