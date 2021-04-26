@@ -24,8 +24,7 @@ class MakePhotoViewController: UIViewController {
         imageView.image = myImage
         
         imageView.snp.makeConstraints {
-            $0.width.equalTo(300)
-            $0.height.equalTo(300)
+            $0.width.height.equalTo(400)
         }
         return imageView
     }()
@@ -76,7 +75,7 @@ class MakePhotoViewController: UIViewController {
     func configureSubView() {
         imageView.snp.makeConstraints {
             $0.centerX.equalTo(view.snp.centerX)
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(100)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         
         btnRefreshPhoto.snp.makeConstraints {
@@ -123,6 +122,13 @@ class MakePhotoViewController: UIViewController {
                 let image = self.imageView.image
                 let imageSaver = ImageSaver()
                 imageSaver.writeToPhotoAlbum(image: image!)
+                
+                let alert = UIAlertController(title: "성공", message: "성공적으로 저장되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                    
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
             }
             .disposed(by: bag)
     }
