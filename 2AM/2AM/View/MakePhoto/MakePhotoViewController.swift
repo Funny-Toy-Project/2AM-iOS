@@ -60,6 +60,21 @@ class MakePhotoViewController: UIViewController {
     private let btnApply = ToolButton(title: "적용하기")
     private let btnSaveImage = ToolButton(title: "저장하기")
     
+    private let btnUpload: UIButton = {
+        let btn = UIButton()
+        btn.snp.makeConstraints {
+            $0.height.equalTo(56)
+        }
+        
+        btn.setTitle("업로드", for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = UIColor.systemBlue
+        
+        btn.layer.cornerRadius = 10
+        return btn
+    }()
+    
     //MARK:- Lifecycle
     override func viewDidLoad() {
         configureView()
@@ -83,7 +98,7 @@ class MakePhotoViewController: UIViewController {
         }
         
         view.addSubview(tfMytext)
-        
+        view.addSubview(btnUpload)
     }
     
     func configureSubView() {
@@ -103,6 +118,12 @@ class MakePhotoViewController: UIViewController {
             $0.top.equalTo(stackButtons.snp.bottom).offset(16)
             $0.trailing.equalTo(view.snp.trailing).offset(-8)
         }
+        
+        btnUpload.snp.makeConstraints {
+            $0.leading.equalTo(view.snp.leading).offset(8)
+            $0.trailing.equalTo(view.snp.trailing).offset(-8)
+            $0.bottom.equalTo(view.snp.bottom).offset(-30)
+        }
     }
     
     func bindRx() {
@@ -117,6 +138,7 @@ class MakePhotoViewController: UIViewController {
                 let myImage = UIImage(named: imageArr.randomElement() ?? "")
                 self.imageView.image = myImage
                 self.tempImage = myImage
+                self.tfMytext.text = ""
             }
             .disposed(by: bag)
         
@@ -154,6 +176,13 @@ class MakePhotoViewController: UIViewController {
                 applyText = changedText
                 print("Changed Text :: \(changedText)")
             })
+            .disposed(by: bag)
+        
+        btnUpload.rx
+            .tap
+            .bind {
+                print("업로드")
+            }
             .disposed(by: bag)
     }
     
