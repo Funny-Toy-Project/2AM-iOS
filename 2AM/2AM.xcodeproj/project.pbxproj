@@ -137,6 +137,7 @@
 		06352F9E2635749800AD1429 /* 2AM */ = {
 			isa = PBXGroup;
 			children = (
+				06CD287E2636A54400C26E3D /* ViewModel */,
 				0618BF72263656DF00404CBE /* Model */,
 				062E38DA263576D7006C9F17 /* Application */,
 				062E38D9263576D0006C9F17 /* View */,
@@ -159,6 +160,21 @@
 				06C41059263579D4000A1109 /* MyPageViewController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		06CD287E2636A54400C26E3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				06CD287F2636A54900C26E3D /* Atuehntication */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		06CD287F2636A54900C26E3D /* Atuehntication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Atuehntication;
 			sourceTree = "<group>";
 		};
 		B1F3CFB8DE39FDC985FB4F1C /* Frameworks */ = {

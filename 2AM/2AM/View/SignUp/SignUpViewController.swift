@@ -7,10 +7,14 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class SignUpViewController: UIViewController {
     
     //MARK:- Private
+    
+    private let bag = DisposeBag()
     
     private let labelTitle: UILabel = {
         let lb = UILabel()
@@ -49,6 +53,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         configureView()
         configureSubView()
+        bindRx()
     }
 }
 
@@ -125,8 +130,27 @@ extension SignUpViewController {
             $0.trailing.equalTo(safeArea.snp.trailing).offset(-16)
             $0.bottom.equalTo(safeArea.snp.bottom).offset(-30)
         }
+    }
+    
+    func bindRx() {
+//        tfPhone.rx
+//            .controlEvent([.editingChanged])
+//            .asObservable()
+//            .subscribe(onNext: { _ in
+//                print("editingChanged: \(self.tfPhone.text ?? "")")
+//            }).disposed(by: bag)
+//
+//        tfPhone.rx
+//            .text
+//            .subscribe(onNext: { newValue in
+//                print("rx.text subscribe : \(newValue ?? "")")
+//            }).disposed(by: bag)
         
-        
-        
+        tfPhone.rx
+            .observe(String.self, "text")
+            .subscribe(onNext: { newValue in
+                print("observe text : \(newValue ?? "")")
+                print("\(String(describing: newValue?.pretty()))")
+            }).disposed(by: bag)
     }
 }
