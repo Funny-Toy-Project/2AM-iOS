@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     private let bag = DisposeBag()
     private let viewModel = LoginViewModel()
     
+    let userEmail = "qqqq"
+    let userPassword = "1q2w3e4r"
     
     private let labelTitle: UILabel = {
         let lb = UILabel()
@@ -168,13 +170,13 @@ class LoginViewController: UIViewController {
         tfLogin.rx
             .text
             .orEmpty
-            .bind(to: viewModel.idTfChanged)
+            .bind(to: viewModel.emailObserver)
             .disposed(by: bag)
         
         tfPassword.rx
             .text
             .orEmpty
-            .bind(to: viewModel.pwTfChanged)
+            .bind(to: viewModel.passObserver)
             .disposed(by: bag)
         
         buttonEditUser.rx
@@ -193,20 +195,35 @@ class LoginViewController: UIViewController {
             .disposed(by: bag)
         
         
-        buttonLogin.rx
-            .tap
-            .bind(to: viewModel.loginBtnTouched)
+        viewModel.isValid.bind(to: buttonLogin.rx.isEnabled)
             .disposed(by: bag)
         
-        viewModel.result.emit(onNext: { (result) in
-            switch result {
-            case .success(let user):
-                print(user)
-                self.push2Login()
-            case .failure(let err):
-                print(err)
-                self.showError()
-            }
-        }).disposed(by: bag)
+        viewModel.isValid
+            .map { $0 ? 1 : 0.3 }
+            .bind(to: buttonLogin.rx.alpha)
+            .disposed(by: bag)
+        
+        buttonLogin.rx
+            .tap
+            .subscribe (
+                onNext: {
+                    [weak self] _ in
+                    if self?.userEmail == self?.viewModel.emailObserver.value &&
+                        self?.userPassword == self?.viewModel.passObserver.value {
+                        let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
+                            self?.push2Login()
+                        }
+                        alert.addAction(ok) 
+                        self?.present(alert, animated: true, completion: nil)
+                    
+                    } else {
+                        let alert = UIAlertController(title: "로그인 실패", message: "아이디 혹은 비밀번호를 다시 확인해주세요", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "확인", style: .default)
+                        alert.addAction(ok)
+                        self?.present(alert, animated: true, completion: nil)
+                    }
+                }).disposed(by: bag)
+
     }
 }

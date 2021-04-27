@@ -7,21 +7,22 @@
 
 import Foundation
 
-struct LoginUser: Codable {
-    let name: String
-}
-
-enum LoginError: Error {
-    case defaulltError
-    case error(code: Int)
-    
-    var msg: String {
-        switch self {
-        case .defaulltError:
-            return "ERROR"
-            
-        case .error(let code):
-            return "\(code) Error"
-        }
-    }
-}
+//struct LoginUser: Codable {
+//    let user: String
+//    let password: String
+//}
+//
+//enum LoginError: Error {
+//    case defaulltError
+//    case error(code: Int)
+//
+//    var msg: String {
+//        switch self {
+//        case .defaulltError:
+//            return "ERROR"
+//
+//        case .error(let code):
+//            return "\(code) Error"
+//        }
+//    }
+//}

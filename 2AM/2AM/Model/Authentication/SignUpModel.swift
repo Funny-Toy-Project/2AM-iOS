@@ -13,7 +13,7 @@ struct SignUpModel {
     func requestSignUp(id: String, pw: String, pwCheck: String, phone:String) -> Observable<Result<SignUpUser, SignUpError>> {
         
         return Observable.create { (observer) -> Disposable in
-            if (id != "" && pw != "" && pwCheck != "" && phone != "") && (pw == pwCheck) {
+            if (id != "" && pw != "" && pwCheck != "" && phone != "") {
                 observer.onNext(.success(SignUpUser(id: id, phone: phone)))
             } else {
                 observer.onNext(.failure(.defaultError))
