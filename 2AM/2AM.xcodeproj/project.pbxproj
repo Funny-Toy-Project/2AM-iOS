@@ -17,6 +17,7 @@
 		06352FA42635749800AD1429 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06352FA32635749800AD1429 /* HomeViewController.swift */; };
 		06352FA92635749900AD1429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06352FA82635749900AD1429 /* Assets.xcassets */; };
 		06352FAC2635749900AD1429 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06352FAA2635749900AD1429 /* LaunchScreen.storyboard */; };
+		06968C8C263825E20090543E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06968C8B263825E20090543E /* AuthService.swift */; };
 		06C4105A263579D4000A1109 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C41059263579D4000A1109 /* MyPageViewController.swift */; };
 		06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */; };
 		06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD288D2636CB4300C26E3D /* ImageSaver.swift */; };
@@ -27,6 +28,8 @@
 		06D7A8B326372D300068473F /* SignUpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D7A8B226372D300068473F /* SignUpUser.swift */; };
 		06D7A8B626372E180068473F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D7A8B526372E180068473F /* SignUpViewModel.swift */; };
 		06D7A8B926372E3A0068473F /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D7A8B826372E3A0068473F /* SignUpModel.swift */; };
+		06D7A8D0263824100068473F /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D7A8CF263824100068473F /* GenericResponse.swift */; };
+		06D7A8D3263824E80068473F /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D7A8D2263824E80068473F /* NetworkResult.swift */; };
 		BDC6F6132B015432A326A8B8 /* Pods_2AM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,7 @@
 		06352FA82635749900AD1429 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06352FAB2635749900AD1429 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06352FAD2635749900AD1429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06968C8B263825E20090543E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		06C41059263579D4000A1109 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePhotoViewController.swift; sourceTree = "<group>"; };
 		06CD288D2636CB4300C26E3D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		06D7A8B226372D300068473F /* SignUpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUser.swift; sourceTree = "<group>"; };
 		06D7A8B526372E180068473F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		06D7A8B826372E3A0068473F /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
+		06D7A8CF263824100068473F /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		06D7A8D2263824E80068473F /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		12A440BEB931F5A1D183C8CA /* Pods-2AM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.debug.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.debug.xcconfig"; sourceTree = "<group>"; };
 		7C84E3E143D4CE03408A4A4B /* Pods_2AM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2AM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA31A7C48F3355100F176EC /* Pods-2AM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2AM.release.xcconfig"; path = "Target Support Files/Pods-2AM/Pods-2AM.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		06CD2893263721F200C26E3D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				06D7A8C126381ABF0068473F /* API */,
 				06CD2894263721F700C26E3D /* Entity */,
 			);
 			path = Core;
@@ -226,6 +233,16 @@
 				06D7A8B226372D300068473F /* SignUpUser.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		06D7A8C126381ABF0068473F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				06D7A8CF263824100068473F /* GenericResponse.swift */,
+				06D7A8D2263824E80068473F /* NetworkResult.swift */,
+				06968C8B263825E20090543E /* AuthService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		B1F3CFB8DE39FDC985FB4F1C /* Frameworks */ = {
@@ -364,12 +381,15 @@
 				06D7A8B926372E3A0068473F /* SignUpModel.swift in Sources */,
 				06CD28992637228000C26E3D /* LoginModel.swift in Sources */,
 				0618BF7E26365CBF00404CBE /* TabBarController.swift in Sources */,
+				06968C8C263825E20090543E /* AuthService.swift in Sources */,
 				06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */,
 				0618BF6D2636474000404CBE /* LabelLogin.swift in Sources */,
 				06352FA42635749800AD1429 /* HomeViewController.swift in Sources */,
 				0618BF7A26365AF200404CBE /* SignUpViewController.swift in Sources */,
 				06CD28912636FEED00C26E3D /* ToolButton.swift in Sources */,
+				06D7A8D3263824E80068473F /* NetworkResult.swift in Sources */,
 				06CD289C2637233000C26E3D /* LoginViewModel.swift in Sources */,
+				06D7A8D0263824100068473F /* GenericResponse.swift in Sources */,
 				06352FA02635749800AD1429 /* AppDelegate.swift in Sources */,
 				06352FA22635749800AD1429 /* SceneDelegate.swift in Sources */,
 				06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */,

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -208,6 +209,43 @@ class LoginViewController: UIViewController {
             .subscribe (
                 onNext: {
                     [weak self] _ in
+                    
+                    guard let idText = self?.tfLogin.text,
+                          let pwText = self?.tfPassword.text else {
+                        return
+                    }
+                    
+                    // 서버 통신 함수 호출 -> 결과는 networkResult로 변환됨
+                    AuthService.shared.signIn(nickname: idText, password: pwText) { (networkResult) -> (Void) in
+                        // 결과에 따라 알림창에 뜨는 메시지를 다르게 설정
+                        switch networkResult {
+                        case .success(let data):
+                            if let signInData = data as? LoginData {
+                                print("\(signInData)")
+                                let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
+                                let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
+                                    self?.push2Login()
+                                }
+                                alert.addAction(ok)
+                                self?.present(alert, animated: true, completion: nil)
+                            }
+                            
+                        case .requestErr(let msg):
+                            if let message = msg as? String {
+                                let alert = UIAlertController(title: "로그인 실패", message: message, preferredStyle: .alert)
+                                let ok = UIAlertAction(title: "확인", style: .default)
+                                alert.addAction(ok)
+                                self?.present(alert, animated: true, completion: nil)
+                            }
+                        case .pathErr:
+                            print("pathErr")
+                        case .serverErr:
+                            print("serverErr")
+                        case .networkFail:
+                            print("networkFail")
+                        }
+                    }
+                    
                     if self?.userEmail == self?.viewModel.emailObserver.value &&
                         self?.userPassword == self?.viewModel.passObserver.value {
                         let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)

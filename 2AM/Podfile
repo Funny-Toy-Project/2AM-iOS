@@ -10,4 +10,5 @@ target '2AM' do
   pod 'RxCocoa'
   pod 'SnapKit'
   pod 'IQKeyboardManagerSwift'
+  pod 'Alamofire'
 end
