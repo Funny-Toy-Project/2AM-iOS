@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+let baseURL = "http://52.79.159.200:8080"

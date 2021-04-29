@@ -156,8 +156,8 @@ class LoginViewController: UIViewController {
         }
         
         for btn in [buttonEditUser, labelBar, buttonSignUp] {
-                    stackView.addArrangedSubview(btn)
-                }
+            stackView.addArrangedSubview(btn)
+        }
         
         buttonLogin.snp.makeConstraints {
             $0.leading.equalTo(safeArea.snp.leading).offset(16)
@@ -206,62 +206,103 @@ class LoginViewController: UIViewController {
         
         buttonLogin.rx
             .tap
-            .subscribe (
-                onNext: {
-                    [weak self] _ in
-                    
-                    guard let idText = self?.tfLogin.text,
-                          let pwText = self?.tfPassword.text else {
-                        return
+            .bind {
+                print("Button 클릭!")
+                self.loginClicked()
+            }.disposed(by: bag)
+        
+        //        buttonLogin.rx
+        //            .tap
+        //            .subscribe (
+        //                onNext: {
+        //                    [weak self] _ in
+        //
+        //                    guard let idText = self?.tfLogin.text,
+        //                          let pwText = self?.tfPassword.text else {
+        //                        return
+        //                    }
+        //
+        //                    // 서버 통신 함수 호출 -> 결과는 networkResult로 변환됨
+        //                    AuthService.shared.signIn(nickname: idText, password: pwText) { (networkResult) -> (Void) in
+        //                        // 결과에 따라 알림창에 뜨는 메시지를 다르게 설정
+        //                        switch networkResult {
+        //                        case .success(let data):
+        //                            print("\(data)")
+        //                            if let signInData = data as? LoginData {
+        //
+        //                                let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
+        //                                let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
+        //                                    self?.push2Login()
+        //                                }
+        //                                alert.addAction(ok)
+        //                                self?.present(alert, animated: true, completion: nil)
+        //                            }
+        //
+        //                        case .requestErr(let msg):
+        //                            if let message = msg as? String {
+        //                                let alert = UIAlertController(title: "로그인 실패", message: message, preferredStyle: .alert)
+        //                                let ok = UIAlertAction(title: "확인", style: .default)
+        //                                alert.addAction(ok)
+        //                                self?.present(alert, animated: true, completion: nil)
+        //                            }
+        //                        case .pathErr:
+        //                            print("pathErr")
+        //                        case .serverErr:
+        //                            print("serverErr")
+        //                        case .networkFail:
+        //                            print("networkFail")
+        //                        }
+        //                    }
+        //                }).disposed(by: bag)
+        
+    }
+    
+    func loginClicked() {
+        
+        // 각각의 텍스트 필드에 담겨 있던 값을 저장
+        guard let emailText = tfLogin.text,
+              let passwordText = tfPassword.text else {
+            return
+        }
+        
+        print("===== login Cliched =====")
+        print("NICKNAME : \(emailText)")
+        print("PASSWORD : \(passwordText)")
+        
+        
+        // 서버 통신 함수 호출 -> 결과는 아까 만들어 준 networkResult로 반환됨
+        AuthService.shared.signIn(nickname: emailText,
+                                  password: passwordText) { (networkResult) -> (Void) in
+            // 결과에 따라 알림창에 뜨는 메세지를 다르게 설정
+            switch networkResult {
+            case .success(let data):
+                print("networkResult \(networkResult)")
+                if let signInData = data as? LoginData {
+                    print("\(signInData.id) 로그인 성공")
+                    let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
+                        self.push2Login()
                     }
-                    
-                    // 서버 통신 함수 호출 -> 결과는 networkResult로 변환됨
-                    AuthService.shared.signIn(nickname: idText, password: pwText) { (networkResult) -> (Void) in
-                        // 결과에 따라 알림창에 뜨는 메시지를 다르게 설정
-                        switch networkResult {
-                        case .success(let data):
-                            if let signInData = data as? LoginData {
-                                print("\(signInData)")
-                                let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
-                                let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
-                                    self?.push2Login()
-                                }
-                                alert.addAction(ok)
-                                self?.present(alert, animated: true, completion: nil)
-                            }
-                            
-                        case .requestErr(let msg):
-                            if let message = msg as? String {
-                                let alert = UIAlertController(title: "로그인 실패", message: message, preferredStyle: .alert)
-                                let ok = UIAlertAction(title: "확인", style: .default)
-                                alert.addAction(ok)
-                                self?.present(alert, animated: true, completion: nil)
-                            }
-                        case .pathErr:
-                            print("pathErr")
-                        case .serverErr:
-                            print("serverErr")
-                        case .networkFail:
-                            print("networkFail")
-                        }
-                    }
-                    
-                    if self?.userEmail == self?.viewModel.emailObserver.value &&
-                        self?.userPassword == self?.viewModel.passObserver.value {
-                        let alert = UIAlertController(title: "로그인 성공", message: "환영합니다", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "확인", style: .default)  { (action) -> Void in
-                            self?.push2Login()
-                        }
-                        alert.addAction(ok) 
-                        self?.present(alert, animated: true, completion: nil)
-                    
-                    } else {
-                        let alert = UIAlertController(title: "로그인 실패", message: "아이디 혹은 비밀번호를 다시 확인해주세요", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "확인", style: .default)
-                        alert.addAction(ok)
-                        self?.present(alert, animated: true, completion: nil)
-                    }
-                }).disposed(by: bag)
-
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            case .requestErr(let msg):
+                if let message = msg as? String {
+                    print("fail message : \(message)")
+                    let alert = UIAlertController(title: "로그인 실패", message: message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+        }
     }
 }

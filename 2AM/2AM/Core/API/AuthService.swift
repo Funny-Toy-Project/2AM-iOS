@@ -17,7 +17,7 @@ struct AuthService {
                 completion: @escaping (NetworkResult<Any>) -> (Void)) {
         
         // 현재 APIConstants 라는 구조체 내의 usersSignInURL 에 값이 있는 상태.
-        let url = ""
+        let url = "http://52.79.159.200:8080/api/login"
         let header: HTTPHeaders = [
             "Content-Type" : "application/json"
         ]
@@ -32,7 +32,8 @@ struct AuthService {
                                      encoding: JSONEncoding.default,
                                      headers: header)
         
-        dataRequest.responseData {(response) in
+        dataRequest.responseJSON {(response) in
+            print("response Data")
             switch response.result {
             case .success:
                 guard let statusCode = response.response?.statusCode else {
@@ -41,11 +42,24 @@ struct AuthService {
                 guard let data = response.value else {
                     return
                 }
+                
+                print("statusCode : \(statusCode)")
+                print("statusCode Type : \(type(of: statusCode))")
+                print("data : \(data)")
+                print("data type : \(type(of: data))")
                 // 응답 상태와 정보를 입력으로 하는 judgeSingInData 함수 실행
-                completion(judgeSignInData(status: statusCode, data: data))
+                
+                let dataExample: Data = NSKeyedArchiver.archivedData(withRootObject: data)
+                let dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: dataExample) as? [String : Any]
+                print("dataExample type : \(type(of: dataExample))")
+                print("dataExample : \(dataExample)")
+                print("dictionary : \(dictionary!)")
+                
+                completion(judgeSignInData(status: statusCode, data: data as! Data))
+                
                 
             case .failure(let err):
-                print(err)
+                print("failure: \(err)")
                 completion(.networkFail)
             }
             
@@ -58,13 +72,22 @@ struct AuthService {
         
         // 우리가 원하는 형태로 디코딩 해준다.
         let decoder = JSONDecoder()
+        
+        
         guard let decodedData = try? decoder.decode(GenericResponse<LoginData>.self, from: data) else {
             return .pathErr
         }
+        
+        print("decodedData status : \(decodedData.status)")
+        print("decodedData success : \(decodedData.success)")
+        print("decodedData message : \(decodedData.message)")
+        print("decodedData data : \(decodedData.data)")
+        
         switch status {
         case 200:
-            return .success(decodedData.data)
-        case 400..<500:
+            print("status 200 : \(decodedData.data!)")
+            return .success(decodedData.data ?? "")
+        case 400:
             return .requestErr(decodedData.message)
         case 500:
             return .serverErr
