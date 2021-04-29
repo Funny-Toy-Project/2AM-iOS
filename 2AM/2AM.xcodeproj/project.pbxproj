@@ -20,6 +20,7 @@
 		06968C8C263825E20090543E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06968C8B263825E20090543E /* AuthService.swift */; };
 		06968C902639A9310090543E /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06968C8F2639A9310090543E /* BaseEndpoint.swift */; };
 		06968C942639A95B0090543E /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06968C932639A95B0090543E /* UserEndpoint.swift */; };
+		06968C97263ACD760090543E /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06968C96263ACD760090543E /* ImageCell.swift */; };
 		06C4105A263579D4000A1109 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C41059263579D4000A1109 /* MyPageViewController.swift */; };
 		06CD288A2636BB7100C26E3D /* MakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */; };
 		06CD288E2636CB4300C26E3D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CD288D2636CB4300C26E3D /* ImageSaver.swift */; };
@@ -51,6 +52,7 @@
 		06968C8B263825E20090543E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		06968C8F2639A9310090543E /* BaseEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
 		06968C932639A95B0090543E /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
+		06968C96263ACD760090543E /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		06C41059263579D4000A1109 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		06CD28892636BB7100C26E3D /* MakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePhotoViewController.swift; sourceTree = "<group>"; };
 		06CD288D2636CB4300C26E3D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				06C41059263579D4000A1109 /* MyPageViewController.swift */,
+				06968C96263ACD760090543E /* ImageCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				06CD28962637220A00C26E3D /* LoginUser.swift in Sources */,
 				06D7A8B926372E3A0068473F /* SignUpModel.swift in Sources */,
 				06968C942639A95B0090543E /* UserEndpoint.swift in Sources */,
+				06968C97263ACD760090543E /* ImageCell.swift in Sources */,
 				06CD28992637228000C26E3D /* LoginModel.swift in Sources */,
 				0618BF7E26365CBF00404CBE /* TabBarController.swift in Sources */,
 				06968C8C263825E20090543E /* AuthService.swift in Sources */,
